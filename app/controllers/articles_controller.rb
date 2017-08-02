@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :get_articles, only: :index
-	before_action :get_article, only: [:show, :update, :edit]
+	before_action :get_article, only: [:show, :update, :edit, :destroy]
 	before_action :set_article, only: [:new]
 
 	def index
@@ -35,6 +35,13 @@ class ArticlesController < ApplicationController
 		else
 			render 'form'
 		end
+	end
+
+	def destroy
+		if @article.destroy
+			redirect_to articles_path
+		end
+
 	end
 
 
