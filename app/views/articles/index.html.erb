@@ -1,0 +1,17 @@
+<h1> Listing all the articles </h1>
+
+<table>
+<tr>
+	<th> Title </th>
+	<th> Description </th>
+</tr>
+
+<% @articles.each do |a| %>
+<tr>
+	<td> <%= a.title %>  </td>
+	<td> <%= a.description %>  </td>
+	<td> <%= link_to "Edit", edit_article_path(a) %> </td>
+	<td> <%= link_to "show", article_path(a) %> </td>
+</tr>
+<% end %>
+</table>
