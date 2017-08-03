@@ -10,8 +10,8 @@
 <tr>
 	<td> <%= a.title %>  </td>
 	<td> <%= a.description %>  </td>
-	<td> <%= link_to "Edit", edit_article_path(a) %> </td>
-	<td> <%= link_to "show", article_path(a) %> </td>
+	<td> <%= link_to "Edit", edit_article_path(a) %> | </td>
+	<td> <%= link_to "show", article_path(a) %> | </td>
 	<td> <%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure ?"} %> </td>
 
 </tr>
