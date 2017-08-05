@@ -14,9 +14,11 @@ class ArticlesController < ApplicationController
 	def create
 		# render plain: params[:article].inspect
 		@article = Article.new(article_params)
+		@article.user_id = User.first.id
 		if @article.save
 			redirect_to articles_path
 		else
+			flash[:error_texts] = @article.errors.full_messages
 			render 'new'
 		end
 	end	
@@ -33,6 +35,7 @@ class ArticlesController < ApplicationController
 		if @article.update_attributes(article_params)
 			redirect_to article_path(@article)
 		else
+			flash[:error_texts] = @article.errors.full_messages
 			render 'form'
 		end
 	end

@@ -1,19 +1,21 @@
-<h1> Listing all the articles </h1>
-
-<table>
-<tr>
-	<th> Title </th>
-	<th> Description </th>
-</tr>
+<h1> List of Articles </h1>
 
 <% @articles.each do |a| %>
-<tr>
-	<td> <%= a.title %>  </td>
-	<td> <%= a.description %>  </td>
-	<td> <%= link_to "Edit", edit_article_path(a) %> | </td>
-	<td> <%= link_to "show", article_path(a) %> | </td>
-	<td> <%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure ?"} %> </td>
-
-</tr>
+<div class="jumbotron">
+<div class="container">
+	<div class="row">
+		<h3> <%= a.title %> </h3>
+ 			<p> <%= truncate(a.description, length: 50) %> </p>
+ 				<small> Created by : <%= a.user.username %> , 
+ 				<%= time_ago_in_words(a.created_at) %> ago,
+ 				Last updated: <%= time_ago_in_words(a.updated_at) %> ago </small>
+				<div>
+  					<a class="btn btn-primary btn-lg" href="<%= edit_article_path(a) %>" role="button">Edit</a>
+  					<a class="btn btn-primary btn-lg" href="<%= article_path(a) %>" role="button">Show</a>
+  					<%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure ?"}, 
+  					class: "btn btn-primary btn-lg" %>
+				</div>
+  	</div>
+</div>
+</div>
 <% end %>
-</table>
