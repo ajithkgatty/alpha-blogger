@@ -1,0 +1,20 @@
+<h1 align="center" > List of Users </h1>
+
+<div class = "col-md-6 col-md-offset-5 center">
+	<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>
+<%= @users.each do |user| %>
+	<div class="jumbotron">
+		<div class="container">
+			<div class="row col-md-6 col-md-offset-5 center">
+			<%= link_to gravatar_for(user), user_path(user) %>
+				<h3> <%= link_to user.username, user_path(user) %> </h3>
+			</div>
+  			</div>
+		</div>
+	</div>
+<% end %>
+<div class = "col-md-6 col-md-offset-5 center">
+	<%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>
+

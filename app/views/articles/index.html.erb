@@ -1,3 +1,8 @@
-<h1> List of Articles </h1>
-
-<%= render 'article', obj: @articles %>
+<h1 class = "col-md-6 col-md-offset-5 center" > List of Articles </h1>
+	<div class=" col-md-6 col-md-offset-5 center">
+		<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+	</div>
+		<%= render 'article', obj: @articles %>
+	<div class=" col-md-6 col-md-offset-5 center">
+		<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+	</div>

@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def get_articles
-		@articles = Article.all
+		@articles = Article.paginate(:page => params[:page], :per_page => 5)
 	end
 
 	def get_article
