@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
+			flash[:success] = "User is succussfully created."
 			redirect_to articles_path
 		else
+			flash[:danger] = "user creation is failed."
 			render 'new'
 		end
 	end
@@ -25,6 +27,7 @@ class UsersController < ApplicationController
 
 	def update
 		unless @user.update_attributes(user_params)
+			flash.now[:danger] = "Something went wrong during updating the user."
 			render 'edit'
 		end
 	end
@@ -37,7 +40,9 @@ class UsersController < ApplicationController
 	def destroy
 		if @user.destroy
 			redirect_to articles_path
+			flash.now[:success] = "User is succussfully deleted."
 		else
+			flash[:danger] = "User is not deleted."
 			render 'edit'
 		end
 	end

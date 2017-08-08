@@ -12,11 +12,12 @@ class ArticlesController < ApplicationController
 	def create
 		# render plain: params[:article].inspect
 		@article = Article.new(article_params)
-		@article.user_id = User.first.id
+		@article.user_id = session[:user_id] if session[:user_id]
 		if @article.save
+			flash[:success] = "Article is successfully created."
 			redirect_to articles_path
 		else
-			flash[:error_texts] = @article.errors.full_messages
+			flash[:danger] = @article.errors.full_messages
 			render 'new'
 		end
 	end	
@@ -30,16 +31,20 @@ class ArticlesController < ApplicationController
 
 	def update
 		if @article.update_attributes(article_params)
+			flash[:success] = "Article is successfully updated."
 			redirect_to article_path(@article)
 		else
-			flash[:error_texts] = @article.errors.full_messages
+			flash[:danger] = @article.errors.full_messages
 			render 'form'
 		end
 	end
 
 	def destroy
 		if @article.destroy
+			flash[:success] = "Article is successfully deleted"
 			redirect_to articles_path
+		else
+			flash[:success] = "Something went wrong while deleting the article."
 		end
 
 	end
