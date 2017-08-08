@@ -6,8 +6,6 @@ class ArticlesController < ApplicationController
 	def index
 	end	
 
-
-
 	def new
 	end
 
@@ -30,7 +28,6 @@ class ArticlesController < ApplicationController
 	def edit
 	end
 
-
 	def update
 		if @article.update_attributes(article_params)
 			redirect_to article_path(@article)
@@ -46,7 +43,6 @@ class ArticlesController < ApplicationController
 		end
 
 	end
-
 
 	private 
 	def article_params
@@ -64,7 +60,4 @@ class ArticlesController < ApplicationController
 	def set_article
 		@article=  Article.new
 	end
-
-
-
 end

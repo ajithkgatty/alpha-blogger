@@ -1,6 +1,11 @@
-<h1> Show the articles </h1>
-	<h1> <%= @article.title %> </h1> <br />
-	<h1> <%= @article.description %> </h1>	
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure ?"} %>
-<%= link_to "Home", articles_path %>
+<div class="jumbotron">
+	<div class="row">
+		<h3 align="center"> <%= @article.title %> </h3> 
+	</div>
+	<div class="row">
+		<p> <%= @article.description %> </p>	
+		<%= link_to "Edit", edit_article_path(@article), class: "btn btn-primary" %>
+		<%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure ?"}, class: "btn btn-primary" %>
+		<%#= link_to "Home", articles_path, class: "btn btn-primary" %>
+	</div>
+</div>

@@ -1,15 +1,12 @@
 <% if obj.count == 0 %>
 	<div class="jumbotron">
-		<div class="container">
-			<div class="row">
+		<div class="row">
 				<h3 align="center"> No articles yet !!! </h3>
-			</div>
 		</div>
 	</div>
 <% else %>		
 	<% obj.each do |a| %>
-		<div class="jumbotron">
-			<div class="container">
+			<div class="jumbotron">
 				<div class="row">
 					<h3> <%= a.title %> </h3>
  					<p> <%= truncate(a.description, length: 50) %> </p>
@@ -17,12 +14,12 @@
  							<%= time_ago_in_words(a.created_at) %> ago,
  							Last updated: <%= time_ago_in_words(a.updated_at) %> ago </small>
 				<div>
-  					<a class="btn btn-primary btn-lg" href="<%= edit_article_path(a) %>" role="button">Edit</a>
-  					<a class="btn btn-primary btn-lg" href="<%= article_path(a) %>" role="button">Show</a>
+  					<a class="btn btn-primary" href="<%= edit_article_path(a) %>" role="button">Edit</a>
+  					<a class="btn btn-primary" href="<%= article_path(a) %>" role="button">Show</a>
   					<%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure ?"}, 
-  					class: "btn btn-primary btn-lg" %>
+  					class: "btn btn-primary" %>
 				</div>
-  			</div>
-		</div>
+			</div>
+  		</div>
 	<% end %>
 <% end %>

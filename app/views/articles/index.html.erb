@@ -1,8 +1,15 @@
 <h1 class = "col-md-6 col-md-offset-5 center" > List of Articles </h1>
 	<div class=" col-md-6 col-md-offset-5 center">
-		<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+		<div class="row">
+			<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+		</div>	
+	</div>
+	<!-- This below div is styling purpose -->
+	<div class="row">
 	</div>
 		<%= render 'article', obj: @articles %>
 	<div class=" col-md-6 col-md-offset-5 center">
-		<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+		<div class="row">
+			<%= will_paginate @articles, renderer: BootstrapPagination::Rails %>
+		</div>
 	</div>
