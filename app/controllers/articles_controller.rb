@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
 	before_action :get_articles, only: :index
 	before_action :get_article, only: [:show, :update, :edit, :destroy]
 	before_action :set_article, only: [:new]
+	before_action :require_user, except: [:index, :show ]
+	before_action :require_same_user, only: [:update, :edit, :destroy]
 
 	def index
 	end	
@@ -65,4 +67,12 @@ class ArticlesController < ApplicationController
 	def set_article
 		@article=  Article.new
 	end
+
+	def require_same_user
+  		if current_user != @article.user
+  			flash[:danger] = "You can only edit/destroy articles created by you."
+  			redirect_to root_path
+  		end
+  	end
 end
+

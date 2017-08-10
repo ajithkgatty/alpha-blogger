@@ -13,12 +13,16 @@
  					<small> Created by : <%= a.user.username %> , 
  							<%= time_ago_in_words(a.created_at) %> ago,
  							Last updated: <%= time_ago_in_words(a.updated_at) %> ago </small>
-				<div>
-  					<a class="btn btn-primary" href="<%= edit_article_path(a) %>" role="button">Edit</a>
-  					<a class="btn btn-primary" href="<%= article_path(a) %>" role="button">Show</a>
-  					<%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure ?"}, 
-  					class: "btn btn-primary" %>
-				</div>
+						<div>
+							<% if logged_in? && current_user == a.user_id %>
+  								<a class="btn btn-primary" href="<%= edit_article_path(a) %>" role="button">Edit the Article</a>
+  							<% end %>
+  							<a class="btn btn-primary" href="<%= article_path(a) %>" role="button">View the Article</a>
+  							<% if logged_in? && current_user == a.user_id %>
+  								<%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure you want to delete this ?"}, 
+  								class: "btn btn-primary" %>
+  							<% end %>
+						</div>
 			</div>
   		</div>
 	<% end %>
