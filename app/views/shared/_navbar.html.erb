@@ -8,9 +8,11 @@
       <% if logged_in? %>
         <li> <%= link_to "New Artice", new_article_path %></li>
         <li> <%= link_to "Log out", logout_path, method: :delete %></li>
+        <li style="float: right"> <%= link_to current_user.username, user_path(current_user) %></li>
       <% else %>
         <li> <%= link_to "Log in", login_path %></li>
         <li> <%= link_to "Sign Up", signup_path %></li>
       <% end %>
+      </ul>
   </div>
 </div> 
