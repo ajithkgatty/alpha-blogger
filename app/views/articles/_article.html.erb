@@ -14,7 +14,7 @@
  							<%= time_ago_in_words(a.created_at) %> ago,
  							Last updated: <%= time_ago_in_words(a.updated_at) %> ago </small>
 						<div>
-							<% if logged_in? && current_user == a.user_id %>
+							<% if logged_in? && ( current_user == a.user_id || current_user.admin? ) %>
   								<a class="btn btn-primary" href="<%= edit_article_path(a) %>" role="button">Edit the Article</a>
   							<% end %>
   							<a class="btn btn-primary" href="<%= article_path(a) %>" role="button">View the Article</a>
