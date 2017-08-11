@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:edit, :update, :destroy]
-	before_action :require_user, except: [:show, :index]
+	before_action :require_user, except: [:show, :index, :new, :create]
 	before_action :require_same_user, only: [:edit, :update]
 
 	def index
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 			flash[:success] = "User is succussfully created."
 			redirect_to user_path @user
 		else
-			flash[:danger] = "user creation is failed."
+			flash[:danger] = @user.errors.full_messages
 			render 'new'
 		end
 	end
