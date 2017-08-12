@@ -14,6 +14,9 @@
  							<%= time_ago_in_words(a.created_at) %> ago,
  							Last updated: <%= time_ago_in_words(a.updated_at) %> ago </small>
 						<div>
+							<% if a.categories.any? %>
+								<p>Categories: <%= render 'categories/category', obj: a %></p>
+							<% end %>
 							<% if logged_in? && ( current_user.id == a.user_id || current_user.admin? ) %>
   								<a class="btn btn-primary" href="<%= edit_article_path(a) %>" role="button">Edit the Article</a>
   							<% end %>
