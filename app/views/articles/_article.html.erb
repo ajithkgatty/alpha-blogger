@@ -1,12 +1,12 @@
 <% if obj.count == 0 %>
-	<div class="jumbotron">
+	<div class="jumbotron remove-extra-padding">
 		<div class="row">
 				<h3 align="center"> No articles yet !!! </h3>
 		</div>
 	</div>
 <% else %>		
 	<% obj.each do |a| %>
-			<div class="jumbotron">
+			<div class="jumbotron remove-extra-padding">
 				<div class="row">
 					<h3> <%= a.title %> </h3>
  					<p> <%= truncate(a.description, length: 50) %> </p>

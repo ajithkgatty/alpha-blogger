@@ -1,0 +1,23 @@
+<h1 class = "col-md-6 col-md-offset-5 center" >  Categories List </h1>
+<div class=" col-md-6 col-md-offset-5 center">
+	<div class="row">
+		<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+	</div>
+</div>
+<div class="row">
+	</div>
+<%= @categories.each do |cat| %>
+	<div class="jumbotron remove-extra-padding">
+		<div class="row">
+			<div class ="col-md-6 col-md-offset-5 center">
+				<h3> <%= link_to cat.name, category_path(cat) %> </h3>
+			</div>
+		</div>
+	</div>
+<% end %>
+<div class=" col-md-6 col-md-offset-5 center">
+	<div class="row">
+		<%= will_paginate @categories, renderer: BootstrapPagination::Rails %>
+	</div>
+</div>
+
