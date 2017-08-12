@@ -21,4 +21,15 @@ class ApplicationController < ActionController::Base
   def can_delete_user?
     logged_in? && current_user.id == session[:user_id] ? false : true
   end
+
+  def require_admin_user
+    debugger
+    if !logged_in? 
+      flash[:danger] = "You must be logged in to perform this action."
+      redirect_to root_path
+    elsif !current_user.admin?  
+      flash[:danger] = "You must be an admin to perform this action."
+      redirect_to root_path
+    end
+  end
 end

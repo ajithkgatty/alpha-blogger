@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
 	before_action :get_categories, only: :index
 	before_action :get_category, only: [ :edit, :update, :show ]
+	before_action :require_admin_user, only: [:new, :create]
 	
 	def index
 	end
