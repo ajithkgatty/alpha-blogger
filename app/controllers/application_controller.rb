@@ -23,7 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin_user
-    debugger
     if !logged_in? 
       flash[:danger] = "You must be logged in to perform this action."
       redirect_to root_path
