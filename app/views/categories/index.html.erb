@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class ="col-md-6 col-md-offset-5 center">
 				<h3> <%= link_to cat.name, category_path(cat) %> </h3>
-				<h3><small><%= pluralize(category.articles.count, "article") %></small></h3>
+				<h3><small><%= pluralize(cat.articles.count, "article") %></small></h3>
 			</div>
 		</div>
 	</div>

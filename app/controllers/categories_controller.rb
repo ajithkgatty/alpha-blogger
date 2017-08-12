@@ -25,6 +25,18 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @category.update(category_params)
+			flash[:success] = "Category name is updated."
+			redirect_to category_path(@category)
+		else
+			render 'edit'
+		end
+	end
+
 	private
 	def category_params
 		params.require(:category).permit(:name)

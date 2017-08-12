@@ -1,0 +1,12 @@
+<h1 align="center"> Creating new Category </h1>
+<!-- <div class ="container"> -->
+<%= form_for @category, html: {class: "form"} do |f| %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+	<%= f.submit %>
+<% end %>
+
+
+
